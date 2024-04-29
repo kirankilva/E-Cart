@@ -1,0 +1,203 @@
+[
+    {
+        "productId": "P-001",
+        "name": "Apple iPhone SE",
+        "imageURL": "/images/iphone-2.png",
+        "description": "Apple iPhone SE (Black, 256gb) (4gb RAM)",
+        "specifications": "15 cm (6.1-inch) Super Retina XDR display. | 12MP Wide angle Camera, HDR 4, Night mode, 4K Dolby Vision HDR recording. | 12MP TrueDepth front camera with Night mode, 4K Dolby Vision HDR recording. ",
+        "price": 55000,
+        "model": "Apple",
+        "category": "Mobile"
+    },
+    {
+        "productId": "P-002",
+        "name": "vivo V27 pro 5G",
+        "imageURL": "/images/vivo.png",
+        "description": "vivo V27 pro 5G (Noble Black, 128gb) (8gb RAM)",
+        "specifications": "17.22 cm (6.78 Inch) Full HD+ AMOLED Display. | 50MP (OIS) + 8MP + 2MP | 50MP Front Camera. | 4600 mAh Battery. | Mediatek Dimensity 7200 5G Processor",
+        "price": 33999,
+        "model": "Vivo",
+        "category": "Mobile"
+    },
+    {
+        "productId": "P-003",
+        "name": "Sony HXR-NX3/1 NXCAM",
+        "imageURL": "/images/camera-3.png",
+        "description": "Sony HXR-NX3/1 NXCAM Professional Handheld Camcorder",
+        "specifications": "Three 1/2.8\" Exmor CMOS Sensors | 1920x1080 up to 60p | Sony G Lens with 20x Optical Zoom | 40x Clear Image Zoom",
+        "price": 83000,
+        "model": "Sony",
+        "category": "Camera"
+    },
+    {
+        "productId": "P-004",
+        "name": "HP 15-Fd0013tu",
+        "imageURL": "/images/laptop-4.png",
+        "description": "Intel Core i5 13th Gen Thin & Light Laptop (16GB, 512GB SSD)",
+        "specifications": "The HP 15-fd0013TU Intel Core i5 13th Gen laptop is a powerful device that comes with Windows 11 Home and MS Office 2021 pre-installed. It has an FHD display",
+        "price": 58000,
+        "model": "HP",
+        "category": "Laptop"
+    },
+    {
+        "productId": "P-005",
+        "name": "Sony HXR-MC2500P",
+        "imageURL": "/images/camera-1.png",
+        "description": "Sony Multi Interface Hot Shoe | SDXC/Memory Stick Card Slot",
+        "specifications": "1/4\" Exmor R CMOS Sensor | 26.8mm Equivalent Wide Angle Lens | Records SD in DV AVI File |OLED Viewfinder with 1.44 Million Dots | Flip-Up 3' LCD with 921k Dot Resolution",
+        "price": 46000,
+        "model": "Sony",
+        "category": "Camera"
+    },
+    {
+        "productId": "P-006",
+        "name": "Apple iPhone 15",
+        "imageURL": "/images/iphone-1.png",
+        "description": "Apple iPhone 15 (Blue, 128gb) (6gb RAM)",
+        "specifications": "17.22 cm (6.78 Inch) Full HD+ AMOLED Display. | 50MP (OIS) + 8MP + 2MP | 50MP Front Camera. | 4600 mAh Battery. | Mediatek Dimensity 7200 5G Processor",
+        "price": 70000,
+        "model": "Apple",
+        "category": "Mobile"
+    },
+    {
+        "productId": "P-007",
+        "name": "Realme P1 pro 5G",
+        "imageURL": "/images/realme.png",
+        "description": "Realme P1 pro 5G (Phoenix Black, 256gbb) (8gb RAM)",
+        "specifications": "With a 33 W Powerful SUPERVOOC Charge, 30 minutes charge for 50% battery and full charge in 70 minutes,5000mAh massive battery, without ever being concerned about the battery running out.",  
+        "price": 23000,
+        "model": "Realme",
+        "category": "Mobile"
+    },
+    {
+        "productId": "P-008",
+        "name": "HP Celeron",
+        "imageURL": "/images/laptop-1.png",
+        "description": "HP Celeron Dual Core N4500 (8 GB/512 GB SSD/Windows 11)",
+        "specifications": "HP Celeron Dual Core N4500 - (8 GB/512 GB SSD/Windows 11 Home) 15s- fq3066TU Thin and Light Laptop",
+        "price": 28000,
+        "model": "HP",
+        "category": "Laptop"
+    },
+    {
+        "productId": "P-009",
+        "name": "Samsung galaxy F14 5G",
+        "imageURL": "/images/samsung.png",
+        "description": "Samsung galaxy F14 5G (Goat Black, 128gb) (8gb RAM)",
+        "specifications": "6 GB RAM | 128 GB ROM | Expandable Upto 1 TB. | 16.76 cm (6.6 inch) Full HD+ Display. | 50MP + 2MP | 13MP Front Camera. | 6000 mAh Battery | Exynos 1330, Octa Core Processor",
+        "price": 10490,
+        "model": "Samsung",
+        "category": "Mobile"
+    },
+    {
+        "productId": "P-010",
+        "name": "Nikon D3300 Camera",
+        "imageURL": "/images/camera-4.png",
+        "description": "Nikon D3300 Camera with 18-55mm Lens (White)",
+        "specifications": "24.2MP DX-Format CMOS Sensor | EXPEED 4 Image Processor | No Optical Low-Pass Filter | 3.0\" 921k-Dot LCD Monitor",
+        "price": 55000,
+        "model": "Nikon",
+        "category": "Camera"
+    },
+    {
+        "productId": "P-011",
+        "name": "Samsung galaxy F34 5G",
+        "imageURL": "/images/samsung.png",
+        "description": "Samsung galaxy F34 5G (Mystic Black, 128gb) (6gb RAM)",
+        "specifications": "6 GB RAM | 128 GB ROM | Expandable Upto 1 TB. | 16.76 cm (6.6 inch) Full HD+ Display. | 50MP + 2MP | 13MP Front Camera. | 6000 mAh Battery | Exynos 1330, Octa Core Processor",
+        "price": 15000,
+        "model": "Samsung",
+        "category": "Mobile"
+    },
+    {
+        "productId": "P-012",
+        "name": "Realme C51",
+        "imageURL": "/images/realme.png",
+        "description": "Realme C51 (Mint Black, 128gbb) (4gb RAM)",
+        "specifications": "With a 33 W Powerful SUPERVOOC Charge, 30 minutes charge for 50% battery and full charge in 70 minutes,5000mAh massive battery, without ever being concerned about the battery running out.",  
+        "price": 9000,
+        "model": "Realme",
+        "category": "Mobile"
+    },
+    {
+        "productId": "P-013",
+        "name": "Dell Inspiron 15",
+        "imageURL": "/images/laptop-4.png",
+        "description": "Dell Inspiron 15 3520 Laptop (12Th Gen i5, 16 GB RAM)",
+        "specifications": "The Dell Inspiron 15 3520 D560879WIN9S Laptop is a powerful machine that comes with a 12th Gen Intel i5 processor,16 GB RAM and512 GB SSD. It has an impressive display of 15.6 inches.",
+        "price": 60000,
+        "model": "Dell",
+        "category": "Laptop"
+    },
+    {
+        "productId": "P-014",
+        "name": "Vivo T2x 5G",
+        "imageURL": "/images/vivo.png",
+        "description": "Vivo T2x 5G (Glimmer Black, 128gb) (6gb RAM)",
+        "specifications": "17.22 cm (6.78 Inch) Full HD+ AMOLED Display. | 50MP (OIS) + 8MP + 2MP | 50MP Front Camera. | 4600 mAh Battery. | Mediatek Dimensity 7200 5G Processor",
+        "price": 14500,
+        "model": "Vivo",
+        "category": "Mobile"
+    },
+    {
+        "productId": "P-015",
+        "name": "Nikon EOS 4000D",
+        "imageURL": "/images/camera-2.png",
+        "description": "Nikon EOS 4000D Camera, Black + 18-55 III",
+        "specifications": "Beginner's DSLR to set you apart | 18.0 MP, APS-C sensor | Wi-Fi¹, Feature Guide",
+        "price": 51000,
+        "model": "Nikon",
+        "category": "Camera"
+    },
+    {
+        "productId": "P-016",
+        "name": "Apple iPhone 15 Plus",
+        "imageURL": "/images/iphone-2.png",
+        "description": "Apple iPhone 15 plus (Black, 128gb) (8gb RAM)",
+        "specifications": "17.22 cm (6.78 Inch) Full HD+ AMOLED Display. | 50MP (OIS) + 8MP + 2MP | 50MP Front Camera. | 4600 mAh Battery. | Mediatek Dimensity 7200 5G Processor",
+        "price": 82000,
+        "model": "Apple",
+        "category": "Mobile"
+    },
+    {
+        "productId": "P-017",
+        "name": "Dell Latitude Air Laptop",
+        "imageURL": "/images/laptop-1.png",
+        "description": "Dell Latitude Air Laptop E7280 Intel Core i5 - 6300U Processor ",
+        "specifications": "This Dell Latitude Air Laptop is a 6th Gen Intel Core i5 - 6300u Processor, 32 GB Ram &amp; 256 GB SSD. It has an ultra slim and feather light design which makes it easy to carry around.",
+        "price": 25000,
+        "model": "Dell",
+        "category": "Laptop"
+    },
+    {
+        "productId": "P-018",
+        "name": "Lenovo Ideapad 1",
+        "imageURL": "/images/laptop-2.png",
+        "description": "Lenovo Ideapad 1 Intel Core Celeron 15\" HD Thin Laptop",
+        "specifications": "Lenovo IdeaPad 1 Intel Core Celeron N4020 15\" HD Thin and Light Laptop (8GB/512GB SDD/Windows 11 Home/Office 2021/1Yr Warranty/Cloud Grey/1.3Kg), 82V700ECIN",
+        "price": 35000,
+        "model": "Lenova",
+        "category": "Laptop"
+    },
+    {
+        "productId": "P-019",
+        "name": "Apple iPhone 13",
+        "imageURL": "/images/iphone-1.png",
+        "description": "Apple iPhone 13 (Starlight, 128gb) (6gb RAM)",
+        "specifications": "17.22 cm (6.78 Inch) Full HD+ AMOLED Display. | 50MP (OIS) + 8MP + 2MP | 50MP Front Camera. | 4600 mAh Battery. | Mediatek Dimensity 7200 5G Processor",
+        "price": 52000,
+        "model": "Apple",
+        "category": "Mobile"
+    },
+    {
+        "productId": "P-020",
+        "name": "Lenovo Chromebook 14E",
+        "imageURL": "/images/laptop-3.png",
+        "description": "Lenovo Chromebook 14E 14.0\" FHD Business Laptop",
+        "specifications": "The Lenovo Chromebook 14e is a great business laptop with an AMD 3015Ce Processor, 4GB DDR4 RAM and 64GB Storage eMMC.",
+        "price": 34000,
+        "model": "Lenova",
+        "category": "Laptop"
+    }
+]
+
