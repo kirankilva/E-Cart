@@ -4,16 +4,21 @@ const Products = require('../models/products');
 exports.getCart = async (req, res, next) => {
     try {
         const user = req.session.user;
-        if (!user) return res.redirect('/products');
+        // if (!user) return res.redirect('/products');
 
-        const cartProducts = await Cart.find({ user: user.email }).populate('cartId');
+        // const cartProducts = await Cart.find({ user: user.email }).populate('cartId');
+        const cartProducts = await Cart.find({ user: 'arun@gmail.com' }).populate('cartId');
         const isEmpty = cartProducts.length === 0;
+        let totalAmount = cartProducts.reduce((total, product)=> total+product.cartId.price, 0);
 
         res.render('cart/cart-products', {
             products: cartProducts,
             isEmpty,
-            isUserLoggedIn: !!user,
-            loggedInUser: user.name
+            // isUserLoggedIn: !!user,
+            isUserLoggedIn: true,
+            // loggedInUser: user.name,
+            loggedInUser: 'Krishna',
+            totalAmount
         });
     } catch (error) {
         next(error);

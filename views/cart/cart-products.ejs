@@ -9,6 +9,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9b14dcfed3.js" crossorigin="anonymous"></script>
+    <!-- <script>
+      var quantityy = document.getElementById('quantity')
+    </script> -->
   <title>Products</title>
   <style>
     .card-container {
@@ -85,13 +89,20 @@
       justify-content: center;
       align-items: center;
     }
+    .total-amount {
+      position: absolute;
+      margin-top: 2%;
+      margin-left: 45%;
+      font-size: larger;
+      font-weight: bold;
+    }
   </style>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/products">Bonstay Cart</a>
+      <a class="navbar-brand" href="/products"><i class="fa-solid fa-cart-shopping" style="color: #ffffff; margin: 0 10px;"></i>Bonstay Cart</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -107,10 +118,12 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
+                <i class="fa-solid fa-user" style="color: #c3c6d1;"></i>
                 <%= loggedInUser %>
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">My Orders</a></li>
                 <li><a class="dropdown-item" href="/logout">Log out</a></li>
               </ul>
             </li>
@@ -140,6 +153,8 @@
       <div>
         <a type="button" class="btn btn-secondary" href="/products">Go Back</a>
         <a type="button" class="btn btn-success" href="#">Place Order</a>
+        <p class="total-amount">Total Amount: ₹<%= totalAmount %></p>
+        <p>Total Amount: <span id="totalAmount">0</span></p>
       </div>
       <% } %>
 
@@ -173,6 +188,10 @@
                         <input type="hidden" name="cartId" value="<%= product._id %>">
                         <button class="btn btn-danger" style="padding: 5px 80px;">Delete</button>
                       </form>
+                      
+    <!-- <button class="btn btn-primary" onclick="decrement()" style="padding: 5px 80px;"><strong>-</strong></button>
+    <label>0</label>
+    <button class="btn btn-primary" onclick="increment()">+</button> -->
                     </div>
                   </div>
                 </div>

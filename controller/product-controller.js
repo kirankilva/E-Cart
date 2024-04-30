@@ -10,29 +10,32 @@ const cartProductsCount = async function(req) {
     return 0;
 }
 
+function filterProducts(allProducts, filter) {
+    return allProducts.filter(p => p.category.toLowerCase() === filter.toLowerCase());
+}
+
 exports.getAllProducts = async (req, res, next) => {
     try {
+        const search = req.query.search;
+        const category = req.query.category;
+        const model = req.query.model;
         let isUserLoggedIn = false;
         let loggedInUser = '';
-        const products = await Products.find({});
+        let products = await Products.find({});
         const count = await cartProductsCount(req, res);
+
+        if(category) { products = filterProducts(products, category);}
+        if(search) { products = products.filter(p.name.toLowerCase().includes(quert.toLowerCase())); }
         if(req.session.user) {
             isUserLoggedIn = true;
             loggedInUser = req.session.user.name;
         }
-        res.render('products/all-products', { products, count, isUserLoggedIn, loggedInUser });
+        res.render('products/all-products', { category, model, products, count, isUserLoggedIn, loggedInUser });
     } catch (error) {
         next(error);
     }
 }
 
-exports.notFound = (req, res, next) => {
-    try {
-        res.render('products/not-found');
-    } catch (error) {
-        next(error);
-    }
-}
 
 exports.getProductById = async (req, res, next) => {
     try {
@@ -46,61 +49,6 @@ exports.getProductById = async (req, res, next) => {
         }
         const count = await cartProductsCount(req);
         res.render('products/view-product', { product, isUserLoggedIn, count, loggedInUser });
-    } catch (error) {
-        next(error);
-    }
-}
-
-exports.searchProducts = async (req, res, next) => {
-    try {
-        let isUserLoggedIn = false;
-        let loggedInUser = '';
-        const query = req.query.query;
-        if (!query) return res.redirect('/products');
-
-        const products = await Products.find({ model: query });
-        if (products.length === 0) return res.redirect('/not-found');
-        const count = await cartProductsCount(req);
-        if(req.session.user) {
-            isUserLoggedIn = true;
-            loggedInUser = req.session.user.name;
-        }
-        res.render('products/search-products', { products, query, count, isUserLoggedIn, loggedInUser });
-    } catch (error) {
-        next(error);
-    }
-}
-
-exports.filterByCategory = async (req, res, next) => {
-    try {
-        let isUserLoggedIn = false;
-        let loggedInUser = '';
-        const category = req.params.category;
-        const products = await Products.find({ category });
-        const count = await cartProductsCount(req);
-        if(req.session.user) {
-            isUserLoggedIn = true;
-            loggedInUser = req.session.user.name;
-        }
-        res.render('products/category-filter', { products, category, count, isUserLoggedIn, loggedInUser });
-    } catch (error) {
-        next(error);
-    }
-}
-
-exports.filterByModel = async (req, res, next) => {
-    try {
-        let isUserLoggedIn = false;
-        let loggedInUser = '';
-        const category = req.params.category;
-        const model = req.params.model;
-        const products = await Products.find({ model });
-        const count = await cartProductsCount(req);
-        if(req.session.user) {
-            isUserLoggedIn = true;
-            loggedInUser = req.session.user.name;
-        }
-        res.render('products/model-filter', { products, model, category, count, isUserLoggedIn, loggedInUser });
     } catch (error) {
         next(error);
     }
