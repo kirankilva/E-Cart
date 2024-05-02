@@ -20,6 +20,9 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'assets')));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
+app.get('/', (req, res)=>{
+    res.redirect('/products');
+});
 app.use('/', userRoutes);
 app.use('/products', productRoutes);
 app.use('/cart', cartRoutes);

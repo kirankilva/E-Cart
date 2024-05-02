@@ -58,3 +58,16 @@ exports.logout = async (req, res, next) => {
         next(error);
     }
 }
+
+exports.profile = async (req, res, next) => {
+    try {
+        if(!req.session.user) { return res.redirect('/products');}
+        const email = req.session.user.email;
+
+        const user = await User.findOne({ email });
+
+        res.render('user/profile', { user });
+    } catch (error) {
+        next(error);
+    }
+}
