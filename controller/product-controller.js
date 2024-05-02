@@ -10,26 +10,29 @@ const cartProductsCount = async function(req) {
     return 0;
 }
 
-function filterProducts(allProducts, filter) {
+function filterProductsByCategory(allProducts, filter) {
     return allProducts.filter(p => p.category.toLowerCase() === filter.toLowerCase());
 }
 
 exports.getAllProducts = async (req, res, next) => {
     try {
-        const search = req.query.search;
-        const category = req.query.category;
-        const model = req.query.model;
-        let isUserLoggedIn = false;
-        let loggedInUser = '';
-        let products = await Products.find({});
-        const count = await cartProductsCount(req, res);
+        const { search, category, model } = req.query;
 
-        if(category) { products = filterProducts(products, category);}
-        if(search) { products = products.filter(p.name.toLowerCase().includes(quert.toLowerCase())); }
-        if(req.session.user) {
-            isUserLoggedIn = true;
-            loggedInUser = req.session.user.name;
+        let isUserLoggedIn = !!req.session.user;
+        let loggedInUser = req.session.user ? req.session.user.name : '';
+
+        let products = await Products.find({});
+
+        if (category) {
+            products = filterProductsByCategory(products, category);
         }
+        if (model) {
+            products = products.filter(p => p.model.toLowerCase() === model.toLowerCase());
+        }
+        if (search) {
+            products = products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
+        }
+        const count = await cartProductsCount(req, res);
         res.render('products/all-products', { category, model, products, count, isUserLoggedIn, loggedInUser });
     } catch (error) {
         next(error);
