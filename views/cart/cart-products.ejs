@@ -154,7 +154,7 @@
         <a type="button" class="btn btn-secondary" href="/products">Go Back</a>
         <a type="button" class="btn btn-success" href="#">Place Order</a>
         <p class="total-amount">Total Amount: ₹<%= totalAmount %></p>
-        <p>Total Amount: <span id="totalAmount">0</span></p>
+        <!-- <p>Total Amount: <span id="totalAmount">0</span></p> -->
       </div>
       <% } %>
 
@@ -163,27 +163,24 @@
             <div class="card mb-3">
               <div class="row g-0">
                 <div class="col-md-4">
-                  <img src="<%= product.cartId.imageURL %>" class="img-fluid rounded-start" style="max-height: 300px;"
+                  <img src="<%= product.productId.imageURL %>" class="img-fluid rounded-start" style="max-height: 300px;"
                     alt="<%= product.name %>">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
                     <h5 class="card-title">
-                      <%= product.cartId.name %>
+                      <%= product.productId.name %>
                     </h5>
                     <p class="card-text">
-                      <%= product.cartId.description %>
+                      <%= product.productId.description %>
                     </p>
                     <p class="card-text text-body-secondary text-justify">
-                      <%= product.cartId.specifications %>
+                      <%= product.productId.specifications %>
                     </p>
-                    <p class="card-text"><strong>Price: ₹<%= product.cartId.price %>
+                    <p class="card-text"><strong>Price: ₹<%= product.productId.price %>
                       </strong></p>
                     <span></span><span></span>
                     <div class="button-container">
-                      <!-- <form action="#" method="post" class="card-buttons">
-                    <button class="btn btn-success" style="padding: 5px 60px;">Book Now</button>
-                  </form> -->
                       <form action="/cart/delete" method="post" class="card-buttons">
                         <input type="hidden" name="cartId" value="<%= product._id %>">
                         <button class="btn btn-danger" style="padding: 5px 80px;">Delete</button>
