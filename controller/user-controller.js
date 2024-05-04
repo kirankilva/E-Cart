@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const { validationResult, matchedData } = require('express-validator')
 
 exports.getLogin = async (req, res, next) => {
     try {
@@ -24,13 +25,27 @@ exports.getRegister = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
     try {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+            const errorMessage = errors.mapped();
+            var inputData = matchedData(req);
+            return res.render('user/login', { errors: errorMessage });
+        }
         const { email, password } = req.body;
         const fetchUser = await User.findOne({ email });
+        // if(!fetchUser) {
+        //     message = 'Incorrect username or password'
+        //     return res.render('user/login', { message: "Invalid username or password" })
+        // }
+        // if(fetchUser.password !== password) {
+        //     message = 'Incorrect username or password'
+        //     return res.render('user/login', { message: "Invalid username or password" })
+        // }
         req.session.user = {
             name: fetchUser.name,
-            email: fetchUser.email,
+            email: fetchUser.email
         };
-        res.redirect('/products');
+        res.redirect('products');
     } catch (error) {
         next(error);
     }
@@ -38,6 +53,12 @@ exports.login = async (req, res, next) => {
 
 exports.signup = async (req, res, next) => {
     try {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+            const errorMessage = errors.mapped();
+            var inputData = matchedData(req);
+            return res.render('user/register', { errors: errorMessage });
+        }
         const user = req.body;
         const newUser = await User.create(user);
         req.session.user = {

@@ -11,6 +11,14 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/9b14dcfed3.js" crossorigin="anonymous"></script>
     <title>Login</title>
+    <style>
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+    </style>
 </head>
 
 
@@ -45,15 +53,23 @@
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
                                             <input type="email" class="form-control" name="email" id="email"
+                                            value="<%= (typeof inputData!='undefined')?inputData.email:'' %>"
                                                 placeholder="Email">
                                             <label for="email" class="form-label">Email</label>
+                                            <span class="text text-danger">
+                                                <%= (typeof errors!='undefined' && typeof errors.email!='undefined' )?errors.email.msg:'' %> %>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
                                             <input type="password" class="form-control" name="password" id="password"
+                                            value="<%= (typeof inputData!='undefined')?inputData.password:'' %>"
                                                 placeholder="Password">
                                             <label for="password" class="form-label">Password</label>
+                                            <span class="text text-danger">
+                                                <%= (typeof errors!='undefined' && typeof errors.password!='undefined' )?errors.password.msg:'' %> %>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -70,10 +86,15 @@
                             </form>
                         </div>
                     </div>
+
                 </div>
             </div>
+            
         </div>
+        
     </section>
+    <span class="text text-danger" style="padding: 42%;"><%= typeof message != 'undefined'?message:'' %></span>
+
 </body>
 
 </html>

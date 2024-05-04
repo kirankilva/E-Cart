@@ -17,9 +17,20 @@ function filterProductsByCategory(allProducts, filter) {
 
 exports.getAllProducts = async (req, res, next) => {
     try {
+        
         const { search, category, model } = req.query;
         const user = req.session.user;
 
+        var productAddedToCart = false;
+        if (user) {
+            if(!user.addedToCart) {
+                user.addedToCart = false;
+            } else {
+                user.addedToCart = true;
+                productAddedToCart = true;
+                delete user.addedToCart;
+            }
+        }
         let isUserLoggedIn = !!req.session.user;
         let loggedInUser = req.session.user ? req.session.user.name : '';
 
@@ -36,7 +47,7 @@ exports.getAllProducts = async (req, res, next) => {
         }
 
         const count = await cartProductsCount(req);
-        res.render('products/all-products', { category, model, products, count, isUserLoggedIn, loggedInUser });
+        res.render('products/all-products', { category, model, products, count, isUserLoggedIn, loggedInUser, productAddedToCart });
     } catch (error) {
         next(error);
     }

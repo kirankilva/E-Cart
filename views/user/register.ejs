@@ -44,15 +44,23 @@
                                     <div class="col-5">
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" name="name" id="name"
+                                                value="<%= (typeof inputData!='undefined')?inputData.name:'' %>"
                                                 placeholder="Name">
                                             <label for="name" class="form-label">Name</label>
+                                            <span>
+                                                <%= (typeof errors!='undefined' && typeof errors.name!='undefined' )?errors.name.msg:'' %> %>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-7">
                                         <div class="form-floating mb-3">
                                             <input type="email" class="form-control" name="email" id="email"
+                                            value="<%= (typeof inputData!='undefined')?inputData.email:'' %>"
                                                 placeholder="Email">
                                             <label for="email" class="form-label">Email</label>
+                                            <span>
+                                                <%= (typeof errors!='undefined' && typeof errors.email!='undefined' )?errors.email.msg:'' %> %>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -60,8 +68,12 @@
                                     <div class="col-13">
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" name="address" id="address"
+                                                value="<%= (typeof inputData!='undefined')?inputData.address:'' %>"
                                                 placeholder="Address">
                                             <label for="address" class="form-label">Address</label>
+                                            <span>
+                                                <%= (typeof errors!='undefined' && typeof errors.address!='undefined' )?errors.address.msg:'' %> %>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -69,15 +81,23 @@
                                     <div class="col-7">
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" name="phone" id="phone"
+                                                value="<%= (typeof inputData!='undefined')?inputData.phone:'' %>"
                                                 placeholder="Phone">
                                             <label for="phone" class="form-label">Phone</label>
+                                            <span>
+                                                <%= (typeof errors!='undefined' && typeof errors.phone!='undefined' )?errors.phone.msg:'' %> %>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-5">
                                         <div class="form-floating mb-3">
                                             <input type="password" class="form-control" name="password" id="password"
+                                                value="<%= (typeof inputData!='undefined')?inputData.password:'' %>"
                                                 placeholder="Password">
                                             <label for="password" class="form-label">Password</label>
+                                            <span>
+                                                <%= (typeof errors!='undefined' && typeof errors.password!='undefined' )?errors.password.msg:'' %> %>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

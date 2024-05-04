@@ -8,5 +8,7 @@ router.post('/add', Controller.addToCart);
 
 router.post('/delete', Controller.deleteFromCart);
 
+router.post('/quantity', Controller.quantityCalculate);
+
 
 module.exports = router;

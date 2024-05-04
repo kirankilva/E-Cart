@@ -266,11 +266,13 @@
         <a type="button" class="btn btn-secondary" href="javascript:history.back()">Go Back</a>
       </div>
       <% } %>
-    <div id="alert-container" class="alert-container">
-      <div class="alert alert-success" role="alert">
-        Product added to cart successfully
-      </div>
-    </div>
+      <% if(productAddedToCart){ %>
+        <div id="alert-container" class="alert-container">
+          <div class="alert alert-success" role="alert">
+            Product added to cart successfully
+          </div>
+        </div>
+      <% } %>
   
     <div class="container" style="margin-top: 5%; margin-left: 5%;">
       <% products.forEach(function(product) { %>
@@ -285,7 +287,7 @@
                 <p class="card-text text-body-secondary">
                   <%= product.description %>
                 </p>
-                <p class="card-text"><strong>Price: ₹<%= product.price %></strong></p>
+                <p class="card-text"><strong>Price: ₹<%= product.price.toLocaleString('en-IN') %></strong></p>
                 <span></span><span></span>
                 <div class="button-container">
                   <form action="#" method="post" class="card-buttons">
