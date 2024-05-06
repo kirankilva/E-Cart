@@ -1,6 +1,7 @@
 const Products = require('../models/products');
 const Cart = require('../models/cart');
 const User = require('../models/user');
+const user = require('../models/user');
 
 const cartProductsCount = async function(req) {
     let user = req.session.user;
@@ -22,15 +23,19 @@ exports.getAllProducts = async (req, res, next) => {
         const user = req.session.user;
 
         var productAddedToCart = false;
+        var currentOpenedProduct = '';
         if (user) {
-            if(!user.addedToCart) {
+            if(!user.addedToCart && !user.currentOpenedProduct) {
                 user.addedToCart = false;
+                user.currentOpenedProduct = '';
             } else {
                 user.addedToCart = true;
                 productAddedToCart = true;
                 delete user.addedToCart;
+                delete user.currentOpenedProduct;
             }
         }
+
         let isUserLoggedIn = !!req.session.user;
         let loggedInUser = req.session.user ? req.session.user.name : '';
 
@@ -46,6 +51,7 @@ exports.getAllProducts = async (req, res, next) => {
             products = products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
         }
 
+        console.log(req.session);
         const count = await cartProductsCount(req);
         res.render('products/all-products', { category, model, products, count, isUserLoggedIn, loggedInUser, productAddedToCart });
     } catch (error) {
@@ -59,11 +65,14 @@ exports.getProductById = async (req, res, next) => {
         let isUserLoggedIn = false;
         let loggedInUser = '';
         const id = req.params.id;
+        let user = req.session.user;
         const product = await Products.findOne({ productId: id });
-        if(req.session.user) {
+        if(user) {
             isUserLoggedIn = true;
             loggedInUser = req.session.user.name;
+            user.currentOpenedProduct = id;
         }
+        console.log(req.session);
         const count = await cartProductsCount(req);
         res.render('products/view-product', { product, isUserLoggedIn, count, loggedInUser });
     } catch (error) {

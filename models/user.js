@@ -7,7 +7,10 @@ const userSchema = mongoose.Schema({
     gender: { type: String, default: 'Male' },
     phone: { type: String, required: true},
     password: { type: String, required: true },
-    carts: { type: [ mongoose.Schema.Types.ObjectId ], ref: 'Cart',  default: [] }
+    carts: { type: [ mongoose.Schema.Types.ObjectId ], ref: 'Cart',  default: [] },
+    savedCards: [{
+        cardId: {type: mongoose.Schema.Types.ObjectId, ref:'Card'}
+    }]
 });
 
 module.exports = mongoose.model('User', userSchema);

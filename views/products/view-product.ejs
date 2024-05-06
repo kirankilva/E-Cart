@@ -136,8 +136,9 @@
               </strong></p>
             <span></span><span></span>
             <div class="button-container">
-              <form action="#" method="post" class="card-buttons">
-                <button class="btn btn-success" style="padding: 5px 80px;">Book Now</button>
+              <form action="/order" method="post" class="card-buttons">
+                <input type="hidden" name="productId" value="<%= product.productId %>">
+                <button class="btn btn-success">Book Now</button>
               </form>
               <form action="/cart/add" method="post" class="card-buttons">
                 <input type="hidden" name="productId" value="<%= product.productId %>">

@@ -100,10 +100,6 @@ exports.quantityCalculate = async(req, res, next) => {
             }
             await cartProduct.save();
         }
-        
-
-        console.log(cartProduct);
-
         res.redirect('/cart')
     } catch (error) {
         next(error)
