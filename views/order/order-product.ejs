@@ -25,6 +25,8 @@
       position: relative;
       text-align: center;
       display: center;
+      font-size: larger;
+      font-weight: bold;
     }
 
     .product-container {
@@ -177,8 +179,8 @@
       <a type="button" class="btn btn-success" href="/cards/add-card">Add Card</a>
       <% } %>
         <div>
-          <p class="total-amount"><strong>Total Amount to be paid: ₹<%= (product.price -
-                (product.price*0.05)).toLocaleString('en-IN') %></strong></p>
+          <p class="total-amount">Total Amount to be paid: ₹<%= (product.price -
+                (product.price*0.05)).toLocaleString('en-IN') %></p>
         </div>
   </div>
 

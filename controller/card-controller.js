@@ -8,7 +8,8 @@ exports.getCards = async(req, res, next) => {
         let debitCards = [];
         let creditCards = [];
         if(user.currentOpenedProduct) {
-            delete user.currentOpenedProduct
+            delete user.currentOpenedProduct;
+            delete user.fromCart;
         }
 
         const fetchUser = await User.findOne({ email: user.email });
@@ -48,7 +49,7 @@ exports.addCard = async(req, res, next) => {
             validTillYear: req.body['valid-till-year'],
             cvv: req.body.cvv
         }
-        if(!Boolean(req.body.proceed)) { return res.redirect('/cards'); }
+        if(req.body.cancel) { return res.redirect('/cards'); }
         const card = await Card.create(cardDetails);
         fetchUser.savedCards.push({ cardId: card._id });
         await fetchUser.save();
@@ -56,6 +57,7 @@ exports.addCard = async(req, res, next) => {
         if(user.currentOpenedProduct) {
             return res.redirect(`/order?productId=${user.currentOpenedProduct}`);
         }
+        if(user.fromCart) { return res.redirect('/cart'); }
         res.redirect('/cards');
     } catch (error) {
         next(error);
@@ -110,6 +112,7 @@ exports.editCard = async (req, res, next) => {
             validTillYear: req.body['valid-till-year'],
             cvv: req.body.cvv
         }
+        if(req.body.cancel) { return res.redirect('/cards'); }
         await Card.findOneAndUpdate({ _id: cardId }, cardDetails, {new:true});
         res.redirect('/cards');
     } catch (error) {

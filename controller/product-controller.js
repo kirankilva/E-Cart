@@ -30,8 +30,11 @@ exports.getAllProducts = async (req, res, next) => {
                 productAddedToCart = true;
             }
             delete user.currentOpenedProduct;
+            delete user.fromCart;
         }
 
+        console.log(req.session);
+        
         let isUserLoggedIn = !!req.session.user;
         let loggedInUser = req.session.user ? req.session.user.name : '';
 
