@@ -7,6 +7,9 @@ exports.getCards = async(req, res, next) => {
         if(!user) { return res.redirect('/products'); }
         let debitCards = [];
         let creditCards = [];
+        if(user.currentOpenedProduct) {
+            delete user.currentOpenedProduct
+        }
 
         const fetchUser = await User.findOne({ email: user.email });
         const cards = await Card.find({ userId: fetchUser._id });
@@ -23,7 +26,7 @@ exports.getAddCard = async (req, res, next) => {
     try {
         const user = req.session.user;
         if(!user) { return res.redirect('/products'); }
-
+        console.log(req.session);
         res.render('cards/add-card', { loggedInUser: user.name });
     } catch (error) {
         next(error);
@@ -32,7 +35,7 @@ exports.getAddCard = async (req, res, next) => {
 
 exports.addCard = async(req, res, next) => {
     try {
-        const user = req.session.user;
+        var user = req.session.user;
         if(!user) { return res.redirect('/products'); }
 
         const fetchUser = await User.findOne({ email: user.email });
@@ -50,6 +53,9 @@ exports.addCard = async(req, res, next) => {
         fetchUser.savedCards.push({ cardId: card._id });
         await fetchUser.save();
 
+        if(user.currentOpenedProduct) {
+            return res.redirect(`/order?productId=${user.currentOpenedProduct}`);
+        }
         res.redirect('/cards');
     } catch (error) {
         next(error);

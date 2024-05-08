@@ -72,7 +72,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/products">Home</a>
+            <a class="nav-link" aria-current="page" href="/products">Home</a>
           </li>
           <% if(isUserLoggedIn) { %>
             <li class="nav-item">
@@ -89,9 +89,11 @@
               <%= loggedInUser %>
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="#">My Orders</a></li>
-              <li><a class="dropdown-item" href="/logout">Log out</a></li>
+              <li><a class="dropdown-item" href="/user-profile"><i class="fa-solid fa-address-card" style="color: #c3c6d1;padding-right: 10px;"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-list" style="color: #c3c6d1;padding-right: 10px;"></i>My Orders</a></li>
+              <li><a class="dropdown-item" href="/cards"><i class="fa-solid fa-credit-card" style="color: #c3c6d1;padding-right: 10px;"></i>Saved Cards</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket" style="color: #c3c6d1;padding-right: 11px;"></i>Log out</a></li>
             </ul>
           </li>
         </ul>
@@ -136,9 +138,9 @@
               </strong></p>
             <span></span><span></span>
             <div class="button-container">
-              <form action="/order" method="post" class="card-buttons">
+              <form action="/order?productId=<%= product.productId %>" method="post" class="card-buttons">
                 <input type="hidden" name="productId" value="<%= product.productId %>">
-                <button class="btn btn-success">Book Now</button>
+                <button class="btn btn-success" style="padding: 5px 80px;">Book Now</button>
               </form>
               <form action="/cart/add" method="post" class="card-buttons">
                 <input type="hidden" name="productId" value="<%= product.productId %>">

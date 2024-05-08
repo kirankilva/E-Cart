@@ -60,17 +60,15 @@
               <i class="fa-solid fa-user" style="color: #c3c6d1;"></i>
               <%= loggedInUser %>
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/user-profile">Profile</a></li>
-              <li><a class="dropdown-item" href="#">My Orders</a></li>
-              <li><a class="dropdown-item" href="/logout">Log out</a></li>
+            <ul class="dropdown-menu"  style="--bs-dropdown-link-active-bg: none;">
+              <li><a class="dropdown-item" href="/user-profile"><i class="fa-solid fa-address-card" style="color: #c3c6d1;padding-right: 10px;"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-list" style="color: #c3c6d1;padding-right: 10px;"></i>My Orders</a></li>
+              <li><a class="dropdown-item" href="/cards"><i class="fa-solid fa-credit-card" style="color: #c3c6d1;padding-right: 10px;"></i>Saved Cards</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket" style="color: #c3c6d1;padding-right: 11px;"></i>Log out</a></li>
             </ul>
           </li>
         </ul>
-            <form class="d-flex" role="search" action="/products" method="get">
-              <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
       </div>
     </div>
   </nav>
@@ -143,7 +141,6 @@
         </div>
       </form>
     </div>
-
 </body>
 
 </html>
