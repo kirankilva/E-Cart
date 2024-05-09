@@ -1,3 +1,8 @@
 node_modules/
+// Directory for installed dependencies and packages
+
 .env
+// Environment configuration file for application settings
+
 package-lock.json
+// Dependency tree and version lock file for npm packages
