@@ -152,23 +152,19 @@
                 <%= loggedInUser %>
               </a>
               <ul class="dropdown-menu"  style="--bs-dropdown-link-active-bg: none;">
-                <li><a class="dropdown-item" href="/user-profile"><i class="fa-solid fa-address-card" style="color: #c3c6d1;padding-right: 10px;"></i>Profile</a></li>
-                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-list" style="color: #c3c6d1;padding-right: 10px;"></i>My Orders</a></li>
-                <li><a class="dropdown-item" href="/cards"><i class="fa-solid fa-credit-card" style="color: #c3c6d1;padding-right: 10px;"></i>Saved Cards</a></li>
+                <li><a class="dropdown-item" href="/user/profile"><i class="fa-solid fa-address-card" style="color: #c3c6d1;padding-right: 10px;"></i>Profile</a></li>
+                <li><a class="dropdown-item" href="/user/orders"><i class="fa-solid fa-list" style="color: #c3c6d1;padding-right: 10px;"></i>My Orders</a></li>
+                <li><a class="dropdown-item" href="/user/cards"><i class="fa-solid fa-credit-card" style="color: #c3c6d1;padding-right: 10px;"></i>Saved Cards</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket" style="color: #c3c6d1;padding-right: 11px;"></i>Log out</a></li>
+                <li><a class="dropdown-item" href="/user/logout"><i class="fa-solid fa-right-from-bracket" style="color: #c3c6d1;padding-right: 11px;"></i>Log out</a></li>
               </ul>
             </li>
           </ul>
-          <% } else { %>
-            <form action="/login" method="get" style="margin-right: 1%;">
-              <button class="btn btn-sm btn-success" type="submit">Login</button>
-            </form>
-            <% } %>
-              <form class="d-flex" role="search" action="/products/search" method="get">
-                <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
-              </form>
+          <% } %>
+          <form class="d-flex" role="search" action="/products/search" method="get">
+            <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
       </div>
     </div>
   </nav>
@@ -197,7 +193,7 @@
                   <img src="<%= product.productId.imageURL %>" class="img-fluid rounded-start" alt="<%= product.productId.name %>">
                 </div>
                 <div class="col-md-9">
-                  <div class="card-body" style="padding-right: 0;">
+                  <div class="card-body" style="padding-right: 0;padding-left: 50px;">
                     <h5 class="card-title"><%= product.productId.name %></h5>
                     <p class="card-text" style="text-align: justify;text-justify: inter-word;"><%= product.productId.specifications %></p>
                     <p class="card-text"><strong>Price: ₹<%= product.productId.price.toLocaleString('en-IN') %></strong></p>

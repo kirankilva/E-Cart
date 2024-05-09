@@ -2,6 +2,7 @@ const Cart = require('../models/cart');
 const Card = require('../models/card');
 const Products = require('../models/products');
 const User = require('../models/user');
+const Order = require('../models/order');
 
 
 exports.getCart = async (req, res, next) => {
@@ -18,14 +19,13 @@ exports.getCart = async (req, res, next) => {
             cardDetails = await Card.findById({ _id: req.query.cardId });
         }
         if(req.body.cancel) {
-            return res.redirect(`/cart`);
+            return res.redirect('/cart');
         }
         const isEmpty = cartProducts.length === 0;
         let totalAmount = cartProducts.reduce((total, product)=> total+(product.productId.price*product.quantity), 0);
         if(!user.fromCart) {
             user.fromCart = true
         }
-        console.log(req.session);
         res.render('cart/cart-products', {
             products: cartProducts,
             cards: loggedUser.savedCards,
@@ -50,7 +50,7 @@ exports.addToCart = async (req, res, next) => {
         }
         const user = req.session.user;
         if (!user) {
-            return res.redirect('/login');
+            return res.redirect('/user/login');
         }
         let loggedInUser = await User.findOne({ email: user.email });
         let searchProductInCart = await Cart.findOne({ productId: product._id, userId: loggedInUser._id });
@@ -75,7 +75,7 @@ exports.deleteFromCart = async (req, res, next) => {
         const cartId = req.body.cartId;
         const user = req.session.user;
         if (!user) {
-            return res.redirect('/login');
+            return res.redirect('/user/login');
         }
         let loggedInUser = await User.findOne({ email: user.email });
         var cartIndex;
@@ -122,19 +122,35 @@ exports.quantityCalculate = async(req, res, next) => {
 exports.payment = async (req, res, next) => {
     try {
         const user = req.session.user;
-        if (!user) { return res.redirect('/login'); }
+        if (!user) { return res.redirect('/user/login'); }
 
         const fetchUser = await User.findOne({ email: user.email });
         const card = await Card.findById({ _id: req.query.cardId });
         const cartProducts = await Cart.find({ userId: fetchUser._id }).populate('productId');
         let totalAmount = cartProducts.reduce((total, product)=> total+(product.productId.price*product.quantity), 0);
 
-        console.log(req.body, req.query);
         if(req.body.submit) {
             if(req.body.password === fetchUser.password && req.body.cvv === card.cvv) {
                 card.balance -= totalAmount;
                 await card.save();
-                return res.redirect('/products');
+
+                let orderDetails = [];
+                for(let i=0; i<cartProducts.length; i++) {
+                    let order = {
+                        productId: cartProducts[i].productId._id,
+                        cardId: card._id,
+                        userId: fetchUser._id,
+                        quantity: cartProducts[i].quantity,
+                        amountPaid: cartProducts[i].quantity * cartProducts[i].productId.price,
+                        date: new Date()
+                    }
+                    orderDetails.push(order);
+                }
+                await Order.insertMany(orderDetails);
+                await Cart.deleteMany({ userId: fetchUser._id });
+                fetchUser.carts = [];
+                await fetchUser.save();
+                return res.redirect('/user/orders');
             }
             return res.json({message: 'invalid credential'});
         }

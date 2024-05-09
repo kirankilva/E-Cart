@@ -45,7 +45,7 @@ exports.login = async (req, res, next) => {
             name: fetchUser.name,
             email: fetchUser.email
         };
-        res.redirect('products');
+        res.redirect('/products');
     } catch (error) {
         next(error);
     }

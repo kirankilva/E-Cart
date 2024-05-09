@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const Card = require('../models/card');
 
-exports.getCards = async(req, res, next) => {
+exports.allCards = async(req, res, next) => {
     try {
         const user = req.session.user;
         if(!user) { return res.redirect('/products'); }
@@ -27,7 +27,6 @@ exports.getAddCard = async (req, res, next) => {
     try {
         const user = req.session.user;
         if(!user) { return res.redirect('/products'); }
-        console.log(req.session);
         res.render('cards/add-card', { loggedInUser: user.name });
     } catch (error) {
         next(error);
@@ -49,7 +48,7 @@ exports.addCard = async(req, res, next) => {
             validTillYear: req.body['valid-till-year'],
             cvv: req.body.cvv
         }
-        if(req.body.cancel) { return res.redirect('/cards'); }
+        if(req.body.cancel) { return res.redirect('/user/cards'); }
         const card = await Card.create(cardDetails);
         fetchUser.savedCards.push({ cardId: card._id });
         await fetchUser.save();
@@ -58,7 +57,7 @@ exports.addCard = async(req, res, next) => {
             return res.redirect(`/order?productId=${user.currentOpenedProduct}`);
         }
         if(user.fromCart) { return res.redirect('/cart'); }
-        res.redirect('/cards');
+        res.redirect('/user/cards');
     } catch (error) {
         next(error);
     }
@@ -77,7 +76,7 @@ exports.deleteCard = async (req, res, next) => {
         fetchUser.savedCards.splice(index, 1);
         await fetchUser.save();
 
-        res.redirect('/cards')
+        res.redirect('/user/cards')
     } catch (error) {
         next(error);
     }
@@ -112,9 +111,9 @@ exports.editCard = async (req, res, next) => {
             validTillYear: req.body['valid-till-year'],
             cvv: req.body.cvv
         }
-        if(req.body.cancel) { return res.redirect('/cards'); }
+        if(req.body.cancel) { return res.redirect('/user/cards'); }
         await Card.findOneAndUpdate({ _id: cardId }, cardDetails, {new:true});
-        res.redirect('/cards');
+        res.redirect('/user/cards');
     } catch (error) {
         next(error);
     }

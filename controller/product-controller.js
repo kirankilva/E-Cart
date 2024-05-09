@@ -31,10 +31,7 @@ exports.getAllProducts = async (req, res, next) => {
             }
             delete user.currentOpenedProduct;
             delete user.fromCart;
-        }
-
-        console.log(req.session);
-        
+        }        
         let isUserLoggedIn = !!req.session.user;
         let loggedInUser = req.session.user ? req.session.user.name : '';
 
@@ -49,8 +46,6 @@ exports.getAllProducts = async (req, res, next) => {
         if (search) {
             products = products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
         }
-
-        // console.log(req.session);
         const count = await cartProductsCount(req);
         res.render('products/all-products', { category, model, products, count, isUserLoggedIn, loggedInUser, productAddedToCart });
     } catch (error) {
@@ -71,7 +66,6 @@ exports.getProductById = async (req, res, next) => {
             loggedInUser = req.session.user.name;
             user.currentOpenedProduct = id;
         }
-        // console.log(req.session);
         const count = await cartProductsCount(req);
         res.render('products/view-product', { product, isUserLoggedIn, count, loggedInUser });
     } catch (error) {

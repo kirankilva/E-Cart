@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res)=>{
     res.redirect('/products');
 });
-app.use('/', userRoutes);
+app.use('/user', userRoutes);
 app.use('/products', productRoutes);
 app.use('/cart', cartRoutes);
 app.use('/order', orderRoutes);

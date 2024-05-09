@@ -12,10 +12,10 @@
     <script src="https://kit.fontawesome.com/9b14dcfed3.js" crossorigin="anonymous"></script>
   <title>Products</title>
   <style>
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    .products-container {
+      margin: 0 4%;
+      margin-top: 5%;
+      border: 3px solid red;
     }
     .card {
       border: 1px solid #ccc;
@@ -35,6 +35,10 @@
       object-fit: cover;
     }
 
+    .buttons-row {
+      margin: 0 10px;
+    }
+
     .card:hover {
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
       transform: translateY(-5px);
@@ -43,23 +47,6 @@
     a {
       text-decoration: none;
       color: inherit;
-    }
-
-    span {
-      padding: 100px;
-    }
-
-    .button-container {
-      display: flex;
-      justify-content: center;
-      position: absolute;
-      bottom: 20px;
-      left: 0;
-      right: 0;
-    }
-
-    .card-buttons {
-      margin: 0 8px;
     }
 
     .no-products {
@@ -237,17 +224,17 @@
               <%= loggedInUser %>
             </a>
             <ul class="dropdown-menu"  style="--bs-dropdown-link-active-bg: none;">
-              <li><a class="dropdown-item" href="/user-profile"><i class="fa-solid fa-address-card" style="color: #c3c6d1;padding-right: 10px;"></i>Profile</a></li>
-              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-list" style="color: #c3c6d1;padding-right: 10px;"></i>My Orders</a></li>
-              <li><a class="dropdown-item" href="/cards"><i class="fa-solid fa-credit-card" style="color: #c3c6d1;padding-right: 10px;"></i>Saved Cards</a></li>
+              <li><a class="dropdown-item" href="/user/profile"><i class="fa-solid fa-address-card" style="color: #c3c6d1;padding-right: 10px;"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="/user/orders"><i class="fa-solid fa-list" style="color: #c3c6d1;padding-right: 10px;"></i>My Orders</a></li>
+              <li><a class="dropdown-item" href="/user/cards"><i class="fa-solid fa-credit-card" style="color: #c3c6d1;padding-right: 10px;"></i>Saved Cards</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket" style="color: #c3c6d1;padding-right: 11px;"></i>Log out</a></li>
+              <li><a class="dropdown-item" href="/user/logout"><i class="fa-solid fa-right-from-bracket" style="color: #c3c6d1;padding-right: 11px;"></i>Log out</a></li>
             </ul>
           </li>
         </ul>
         <% } else { %>
           </ul>
-          <form action="/login" method="get" style="margin-right: 1%;">
+          <form action="/user/login" method="get" style="margin-right: 1%;">
             <button class="btn btn-sm btn-success" type="submit">Login</button>
           </form>
           <% } %>
@@ -281,36 +268,31 @@
         </div>
       <% } %>
   
-    <div class="container" style="margin-top: 5%; margin-left: 5%;">
-      <% products.forEach(function(product) { %>
-        <a href="/products/<%= product.productId %>">
-          <div class="card">
-            <img src="<%= product.imageURL %>" alt="<%= product.name %>">
-            <div class="card-body">
-              <div>
-                <h5 class="card-title">
-                  <%= product.name %>
-                </h5>
-                <p class="card-text text-body-secondary">
-                  <%= product.description %>
-                </p>
-                <p class="card-text"><strong>Price: ₹<%= product.price.toLocaleString('en-IN') %></strong></p>
-                <span></span><span></span>
-                <div class="button-container">
-                  <form action="/order?productId=<%=product.productId%>" method="post" class="card-buttons">
-                    <button class="btn btn-success">Book Now</button>
-                  </form>
-                  <form action="/cart/add" method="post" class="card-buttons">
-                    <input type="hidden" name="productId" value="<%= product.productId %>">
-                    <button class="btn btn-outline-success">Add to cart</button>
-                  </form>
+      <div class="products-container">
+        <div class="container">
+          <% products.forEach(function(product) { %>
+            <a href="/products/<%= product.productId %>">
+              <div class="card">
+                <img src="<%= product.imageURL %>" alt="<%= product.name %>">
+                <div class="card-body">
+                  <h5 class="card-title"><%= product.name %></h5>
+                  <p class="card-text"><%= product.description %></p>
+                  <p class="card-text"><b>Price: ₹<%= product.price.toLocaleString('en-IN') %></b></p>
+                  <div class="row buttons-row">
+                    <form action="/order?productId=<%=product.productId%>" method="post" class="col-md-8">
+                      <button class= "btn btn-success" style="width: 100%;">Buy Now</button>
+                    </form>
+                    <form action="/cart/add" method="post" class="col-md-3">
+                      <input type="hidden" name="productId" value="<%= product.productId %>">
+                      <button class="btn btn-outline-dark"><i class="fa-solid fa-cart-plus"></i></button>
+                    </form>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </a>
-        <% }); %>
-    </div>
+            </a>
+          <% }); %>
+        </div>
+      </div>
   <% } %>
 
 </body>
