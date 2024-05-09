@@ -1,7 +1,7 @@
 {
   "name": "bonstay",
   "version": "1.0.0",
-  "description": "",
+  "description": "E-Cart is a user-friendly e-commerce platform for online shopping, offering a seamless experience for customers.",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
