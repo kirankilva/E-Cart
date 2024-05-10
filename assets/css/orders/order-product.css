@@ -1,0 +1,117 @@
+.top-container,
+.empty-cards-container,
+.cards-container,
+.payment-container {
+    margin: 10px 4%;
+}
+
+.total-amount {
+    position: relative;
+    text-align: center;
+    display: center;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.product-container {
+    margin: 10px 4%;
+    padding: 0 10%;
+}
+
+.product-table {
+    position: relative;
+    padding: 10px;
+}
+
+.product-details {
+    padding: 0 20%;
+}
+
+.table {
+    max-width: 650px;
+    position: relative;
+    border-top: 1px solid gray;
+}
+
+.empty-cards-text,
+.cards-text {
+    text-align: center;
+    display: center;
+    font-size: larger;
+}
+
+.empty-cards-button {
+    text-align: center;
+    display: center;
+    font-size: larger;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    display: inline-block;
+}
+
+a {
+    text-decoration: none;
+}
+
+.card-images {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-numbers {
+    display: flex;
+    margin-top: 30px;
+    max-height: 30px;
+    justify-content: space-between;
+}
+
+.card-type,
+.card-holder {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chip-img {
+    width: 45px;
+    height: 40px;
+}
+
+.mastercard-logo-img {
+    width: 90px;
+    height: 50px;
+}
+
+.visa-logo-img {
+    width: 90px;
+    height: 40px;
+}
+
+.num {
+    flex: 1;
+    font-size: large;
+    color: #fff;
+}
+
+.payment-form {
+    flex: 1;
+    margin-top: 10px;
+    padding: 20px 30px;
+    max-width: 500px;
+    max-height: 500px;
+    background-color: #d1d3db;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}

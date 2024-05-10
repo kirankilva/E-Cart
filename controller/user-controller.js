@@ -25,12 +25,12 @@ exports.getRegister = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
     try {
-        const errors = validationResult(req);
-        if(!errors.isEmpty()){
-            const errorMessage = errors.mapped();
-            var inputData = matchedData(req);
-            return res.render('user/login', { errors: errorMessage });
-        }
+        // const errors = validationResult(req);
+        // if(!errors.isEmpty()){
+        //     const errorMessage = errors.mapped();
+        //     var inputData = matchedData(req);
+        //     return res.render('user/login', { errors: errorMessage });
+        // }
         const { email, password } = req.body;
         const fetchUser = await User.findOne({ email });
         // if(!fetchUser) {
