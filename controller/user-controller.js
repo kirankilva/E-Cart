@@ -33,6 +33,7 @@ exports.login = async (req, res, next) => {
         // }
         const { email, password } = req.body;
         const fetchUser = await User.findOne({ email });
+        var message = 'invalid'
         // if(!fetchUser) {
         //     message = 'Incorrect username or password'
         //     return res.render('user/login', { message: "Invalid username or password" })
@@ -53,13 +54,14 @@ exports.login = async (req, res, next) => {
 
 exports.signup = async (req, res, next) => {
     try {
-        const errors = validationResult(req);
-        if(!errors.isEmpty()){
-            const errorMessage = errors.mapped();
-            var inputData = matchedData(req);
-            return res.render('user/register', { errors: errorMessage });
-        }
+        // const errors = validationResult(req);
+        // if(!errors.isEmpty()){
+        //     const errorMessage = errors.mapped();
+        //     var inputData = matchedData(req);
+        //     return res.render('user/register', { errors: errorMessage });
+        // }
         const user = req.body;
+        console.log(user);
         const newUser = await User.create(user);
         req.session.user = {
             name: newUser.name,

@@ -18,9 +18,5 @@ h3 {
 .btn-primary,
 .btn-danger {
     width: 100%;
-}
-
-.btn-primary,
-.btn-danger {
     margin: 20px 0;
 }

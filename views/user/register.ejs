@@ -10,6 +10,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/9b14dcfed3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/user/register.css">
     <title>Register</title>
 </head>
 
@@ -32,94 +33,66 @@
         </div>
     </nav>
 
-    <section class=" py-3 py-md-5">
-        <div class="container ">
-            <div class="row justify-content-center">
-                <div class="col-xxl-7">
-                    <div class="card border border-light-subtle rounded-3 shadow-lg">
-                        <div class="card-body p-3 p-md-4 p-xl-5">
-                            <h2 class="fs-6 fw-normal text-center text-secondary md-4">Create your account </h2>
-                            <form action="/register" method="post">
-                                <div class="row gy-2 overflow-hidden">
-                                    <div class="col-5">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="name" id="name"
-                                                value="<%= (typeof inputData!='undefined')?inputData.name:'' %>"
-                                                placeholder="Name">
-                                            <label for="name" class="form-label">Name</label>
-                                            <span>
-                                                <%= (typeof errors!='undefined' && typeof errors.name!='undefined' )?errors.name.msg:'' %> %>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="form-floating mb-3">
-                                            <input type="email" class="form-control" name="email" id="email"
-                                            value="<%= (typeof inputData!='undefined')?inputData.email:'' %>"
-                                                placeholder="Email">
-                                            <label for="email" class="form-label">Email</label>
-                                            <span>
-                                                <%= (typeof errors!='undefined' && typeof errors.email!='undefined' )?errors.email.msg:'' %> %>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row gy-2 overflow-hidden">
-                                    <div class="col-13">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="address" id="address"
-                                                value="<%= (typeof inputData!='undefined')?inputData.address:'' %>"
-                                                placeholder="Address">
-                                            <label for="address" class="form-label">Address</label>
-                                            <span>
-                                                <%= (typeof errors!='undefined' && typeof errors.address!='undefined' )?errors.address.msg:'' %> %>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row gy-2 overflow-hidden">
-                                    <div class="col-7">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="phone" id="phone"
-                                                value="<%= (typeof inputData!='undefined')?inputData.phone:'' %>"
-                                                placeholder="Phone">
-                                            <label for="phone" class="form-label">Phone</label>
-                                            <span>
-                                                <%= (typeof errors!='undefined' && typeof errors.phone!='undefined' )?errors.phone.msg:'' %> %>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-5">
-                                        <div class="form-floating mb-3">
-                                            <input type="password" class="form-control" name="password" id="password"
-                                                value="<%= (typeof inputData!='undefined')?inputData.password:'' %>"
-                                                placeholder="Password">
-                                            <label for="password" class="form-label">Password</label>
-                                            <span>
-                                                <%= (typeof errors!='undefined' && typeof errors.password!='undefined' )?errors.password.msg:'' %> %>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row gy-2 overflow-hidden">
-                                    <div class="col-22">
-                                        <div class="d-grid my-3">
-                                            <button class="btn btn-success btn-lg" type="submit">REGISTER</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-13">
-                                        <p class="m-0 text-secondary text-center">Already have an account?
-                                            <a class="link-primary text-decoration-none" href="/user/login">Login</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+    <div class="top-container">
+        <div class="container">
+            <form id="form" class="row g-3" action="/user/register" method="post">
+                    <div class="col-md-12">
+                        <h5>Create your account</h5>
                     </div>
-                </div>
-            </div>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Username">
+                        <span class="error"></span>
+                    </div>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+                        <span class="error"></span>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Address">
+                        <span class="error"></span>
+                    </div>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number">
+                        <span class="error"></span>
+                    </div>
+                    <div class="col-md-5 radio-btn" >
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="gender1" value="male">
+                            <label class="form-check-label" for="gender1">Male</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="gender2" value="female">
+                            <label class="form-check-label" for="gender2">Female</label>
+                          </div>
+                    </div>
+
+                    <!-- <div class="dropdown col-md-5">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Gender
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Male</a></li>
+                          <li><a class="dropdown-item" href="#">Female</a></li>
+                        </ul>
+                    </div> -->
+
+                    <div class="col-md-6">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                        <span class="error"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control" name="password2" id="password2" placeholder=" Confirm Password">
+                        <span class="error"></span>
+                    </div>
+                    <div class="col-md-12" style="margin-top: 30px;">
+                        <button type="submit" class="btn btn-primary form-control">Register</button>
+                    </div>
+                    <div class="col-md-12">
+                        <p>Already have an account? <a href="/user/login">Login</a></p>
+                    </div>
+            </form>
         </div>
-    </section>
+    </div>
 </body>
 
 </html>
